@@ -74,7 +74,7 @@ module Wackamole
     
     # -------------------------------------------------------------------------
     # Inspect current connection databases and weed out mole_xxx databases
-    def self.mole_databases( zone )
+    def self.mole_databases( zone='production' )
       connection( zone ).database_names.select do |db_name|
         db_name if mole_db?( zone, db_name )
       end
