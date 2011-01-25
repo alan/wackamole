@@ -37,6 +37,8 @@ configure do
       use Rack::Session::Mongo, 
         :server    => "%s:%d/%s/%s" % [@@options[:host], @@options[:port], @@options[:db_name], @@options[:cltn_name]],
         :log_level => :debug
+        :user => @@options[:user],
+        :password => @@options[:password]
     else
       use Rack::Session::Memcache, 
         :memcache_server => "%s:%d" % [@@options[:host], @@options[:port]],
