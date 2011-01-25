@@ -9,7 +9,7 @@ module Wackamole
     # Initialize app by reading off mongo configuration parameters if necessary
     def self.init_config( config_file )
       begin
-        @config = YAML.load_file( config_file )
+        @config = YAML.load( ERB.new(IO.read(config_file)).result(binding))
         raise "Unable to find zones definition" unless @config['zones']
       rescue => boom
         @config = nil          

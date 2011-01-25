@@ -13,6 +13,7 @@ rescue LoadError
 end
 
 ensure_in_path 'lib'
+require 'chronic'
 require 'wackamole'
 
 PROJ.name        = 'wackamole'

@@ -11,7 +11,7 @@ set :public, File.join( File.dirname(__FILE__), %w[.. public] )
 set :views , File.join( File.dirname(__FILE__), %w[.. views] )
 
 def default_config
-  File.join( ENV['HOME'], %w[.wackamole zones.yml] )    
+  @@options['config_path'] 
 end
 
 # -----------------------------------------------------------------------------
