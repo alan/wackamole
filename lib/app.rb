@@ -11,7 +11,7 @@ set :public, File.join( File.dirname(__FILE__), %w[.. public] )
 set :views , File.join( File.dirname(__FILE__), %w[.. views] )
 
 def default_config
-  @@options['config_path'] 
+  @@options[:config_path] 
 end
 
 # -----------------------------------------------------------------------------
