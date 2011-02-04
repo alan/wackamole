@@ -36,7 +36,7 @@ configure do
     if @@options[:protocol] == 'mongo'
       use Rack::Session::Mongo, 
         :server    => "%s:%d/%s/%s" % [@@options[:host], @@options[:port], @@options[:db_name], @@options[:cltn_name]],
-        :log_level => :debug,
+        :log_level => :error,
         :user => @@options[:user],
         :password => @@options[:password]
     else

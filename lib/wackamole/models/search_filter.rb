@@ -153,7 +153,6 @@ module Wackamole
       else
         date         = Chronic.parse( "#{days == 0 ? "now" : "#{days} days ago"}" )
         time         = Time.gm( date.year, date.month, date.day, current_hour, 0, 1 )
-puts "!!!!!TIME", time.inspect        
         conds[:did]  = { '$gte' => time.to_date_id.to_s }         
         conds[:tid]  = /^#{"%02d"%time.hour}.+/ unless current_hour == 0
       end

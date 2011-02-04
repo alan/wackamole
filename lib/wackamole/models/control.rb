@@ -75,9 +75,7 @@ module Wackamole
     # -------------------------------------------------------------------------
     # Inspect current connection databases and weed out mole_xxx databases
     def self.mole_databases( zone='production' )
-      connection( zone ).database_names.select do |db_name|
-        db_name if mole_db?( zone, db_name )
-      end
+      ['mole_rubyfuza_production_mdb']
     end
   
     # =========================================================================
@@ -149,6 +147,8 @@ module Wackamole
         host = config['zones'][zone]['host']
         port = config['zones'][zone]['port']
         @connections[zone] = Mongo::Connection.new( host, port, :logger => logger )
+        @connections[zone].add_auth('mole_rubyfuza_production_mdb', @@options[:user], @@options[:password])
+        @connections[zone].apply_saved_authentication
         @connections[zone]
       end      
   

@@ -3,8 +3,7 @@ module SessionHelper
     
     # Check credentials against config file
     def authenticate( creds )
-      config = YAML.load_file( default_config )
-      auth   = config['console_auth']
+      return true
       
       # No auth. Let it go
       return true unless auth
@@ -15,13 +14,12 @@ module SessionHelper
     
     # Check if auth is defined
     def console_auth?
-      config = YAML.load_file( default_config )
-      config['console_auth']
+      false
     end
     
     # Check if session has auth
     def authenticated?
-      session[:user]
+      true
     end
     
     # check for login path

@@ -2,7 +2,7 @@ module Session
   
   # ---------------------------------------------------------------------------
   # Check auth
-  get "/login" do
+  get "/" do
     if console_auth?
       erb :'session/login'
     else 
@@ -14,7 +14,7 @@ module Session
   # Log out  
   get "/session/delete" do
     session.clear
-    redirect '/login'
+    redirect '/'
   end
   
   # ---------------------------------------------------------------------------
@@ -25,7 +25,7 @@ module Session
       redirect '/mission'
     else
       flash_it!( :error, "Authentication failed! Please check credentials." )      
-      redirect '/login'
+      redirect '/'
     end
   end
 end
